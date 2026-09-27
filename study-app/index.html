@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer Study Guide</title>
+<meta name="description" content="Interactive study app for AI engineering — flashcards, notes, and spaced repetition across 14 modules.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>AI Engineer</h1>
+      <p>66 topics across 14 modules</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="globalProgress" style="width: 0%"></div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav"></nav>
+    <div class="sidebar-footer">
+      <div class="mode-switcher">
+        <button class="mode-btn" data-mode="notes" onclick="setMode('notes')">Notes</button>
+        <button class="mode-btn active" data-mode="flashcard" onclick="setMode('flashcard')">Cards</button>
+        <button class="mode-btn" data-mode="quiz" onclick="setMode('quiz')">Quiz</button>
+        <button class="mode-btn" data-mode="random" onclick="setMode('random')">Random</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div id="statsBar" class="stats-bar" style="display:none">
+      <div class="stat"><span class="dot green"></span><span id="statGot">0</span> confident</div>
+      <div class="stat"><span class="dot yellow"></span><span id="statReview">0</span> review</div>
+      <div class="stat"><span class="dot red"></span><span id="statNoIdea">0</span> missed</div>
+      <div class="stat"><span class="dot gray"></span><span id="statUnseen">0</span> unseen</div>
+    </div>
+
+    <div class="main-header" id="mainHeader" style="display:none">
+      <h2 id="topicTitle"></h2>
+      <span class="card-counter" id="cardCounter"></span>
+    </div>
+
+    <div class="main-body" id="mainBody">
+      <!-- Welcome screen -->
+      <div class="welcome" id="welcomeScreen">
+        <h2>Ready to study?</h2>
+        <p>Pick a topic from the sidebar to start with flashcards. Flip cards, rate yourself, and track your progress.</p>
+        <p style="font-size: 13px;">Your progress is saved in your browser automatically.</p>
+        <div class="keys">
+          <span class="key"><kbd>Space</kbd> flip card</span>
+          <span class="key"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> navigate</span>
+          <span class="key"><kbd>1</kbd> no idea</span>
+          <span class="key"><kbd>2</kbd> needs review</span>
+          <span class="key"><kbd>3</kbd> got it</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-nav" id="cardNav" style="display:none">
+      <button class="nav-btn" id="prevBtn" onclick="prevCard()">Previous</button>
+      <button class="nav-btn" id="flipBtn" onclick="flipCard()">Flip</button>
+      <button class="nav-btn" id="nextBtn" onclick="nextCard()">Next</button>
+    </div>
+
+    <div class="rating-btns hidden" id="ratingBtns">
+      <button class="rate-btn no-idea" onclick="rateCard('no-idea')">1 - No Idea</button>
+      <button class="rate-btn needs-review" onclick="rateCard('needs-review')">2 - Needs Review</button>
+      <button class="rate-btn got-it" onclick="rateCard('got-it')">3 - Got It</button>
+    </div>
+
+    <div class="keyboard-hint" id="keyboardHint" style="display:none">
+      <kbd>Space</kbd> flip &nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> navigate &nbsp; <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> rate
+    </div>
+  </main>
+</div>
+
+<!-- Data -->
+<script src="js/data/modules.js"></script>
+<script src="js/data/notes.js"></script>
+<!-- App -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
